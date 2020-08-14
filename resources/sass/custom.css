@@ -1,0 +1,150 @@
+.top-header-thumb{
+    min-height: 100px;
+    background: #ff7e5f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #feb47b, #ff7e5f);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #feb47b, #ff7e5f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.top-header-thumb:after{
+    display: none;
+}
+.header{
+    position: relative;
+}
+#authpage{
+background: #ff7e5f; 
+background: -webkit-linear-gradient(to top, #feb47b, #ff7e5f);
+background: linear-gradient(to top, #feb47b, #ff7e5f);
+    background-repeat: repeat;
+    background-size: auto;
+background-size: cover;
+background-repeat: no-repeat;
+height: 100vh;
+}
+
+#adminbar {
+    background-color: #feb47b;
+    overflow: hidden;
+    padding: 10px;
+}
+.header .page-title {
+    padding: 0 0 0 50px;
+    text-transform: uppercase;
+    float: left;
+    height: 100%;
+    min-width: 170px; 
+    margin-top: -5px;
+}
+.kustomer-header{
+    display:none!important;
+
+}
+.ui-block-content.active {
+  background-color: #feb37a;
+}
+.flash {
+    padding: 10px 0 0;
+    text-align: center;
+    border: solid 2px;
+    margin-bottom: 20px;
+}
+.center{
+  text-align: center;
+}
+.btn-purple {
+    background-color: #7c5ac2!important; }
+  
+  .btn-blue {
+    background-color: #38a9ff!important; }
+  
+  .btn-breez {
+    background-color: #08ddc1!important; }
+  
+  .btn-green {
+    background-color: #1ed760!important;color:white!important; }
+  
+  .btn-grey {
+    background-color: #515365!important; color:white!important;}
+  
+  .btn-grey-light {
+    background-color: #888da8!important; }
+  
+  .btn-grey-lighter {
+    background-color: #9a9fbf!important; } 
+  
+  .btn-breez-light {
+    background-color: #2aebcb!important; }
+  
+  .btn-yellow {
+    background-color: #ffdc1b!important; }
+  
+  .btn-smoke {
+    background-color: #e6ecf5!important; color:white!important;}
+  
+  .btn-orange{
+    background-color: #ff763a!important;
+    color:white!important;
+  }
+  
+  .post-category{
+    margin: 5px 5px 20px 5px;
+  }
+    .category-Site{
+        background-color: #ff763a;
+    }
+    .category-All{
+      background-color: #38a9ff;
+    }
+    .category-Inspiration{
+      background-color: #7c5ac2;
+    }
+    .category-Showcase{
+      background-color: #ffdc1b;
+    }
+
+    .center{
+      text-align: center; 
+    }
+
+
+
+    /** print **/
+    @media print {
+      .top-header,
+      #site-header,
+      #footer,
+      .btn-print,
+      .dontprint{
+        display: none;
+      }
+      #printme{
+        max-width: 100%;
+      }
+      .table th, .table td{
+        padding: 0;
+      }
+      .table{
+        font-size:12px;
+      }
+      .card-header{
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+      .table td, .table th{
+        max-width:50px;
+        width: 50px;
+        overflow: hidden;
+        word-wrap: break-word;
+        border: none;
+        padding: 0;
+      }
+    }
+
+    .ui-block-content.tab-title {
+      text-align: center;
+      width: 100%;
+      display: block;
+  }
+  .ui-block-content.tab-title:hover {
+    background-color: #feb179;
+}
