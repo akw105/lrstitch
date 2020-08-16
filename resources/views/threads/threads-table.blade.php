@@ -19,7 +19,7 @@
         <div class="col col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
             <div id="thread-card">
                 <div id="thread-listing">
-                    <div class="ui-block">
+                    <div class="">
                         @include('includes.search')
                     </div>
                     <table class="table table-bordered table-hover ui-block">

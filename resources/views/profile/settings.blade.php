@@ -13,7 +13,8 @@
                     <a href="/password/reset">Change Password</a><br/>
                     {{-- <a href="#">Add social media links</a> --}}
                     <br/><br/>
-                    {{-- <h3>Advanced</h3> --}}
+                    <h3>Advanced</h3>
+                    <p><a href="/thread-export">Export your thread inventory</a></p>
                     {{-- <p>Your subscription level: {{ $subscriptionplan }}<br/>
                     <a href="/subscription-change">Change subscription plan</a></p> --}}
                     {{-- <a href="#">Email settings</a> --}}

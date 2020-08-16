@@ -1,9 +1,9 @@
 <div  class="row">
     <div class="form-group col">    
-        <input type="text" class="form-controller" id="search" name="search" placeholder="Search by number..."/>
+        <input type="text" class="form-controller ui-block" id="search" name="search" placeholder="Search by number..."/>
     </div>
     <div class="form-group col">
-        <select class="form-controller" id="category" name="category">
+        <select class="form-controller ui-block" id="category" name="category">
             <option default value="null">Filter by colour</option>
             <option value="white">White</option>
             <option value="red">Red</option>
@@ -21,6 +21,8 @@
 jQuery( document ).ready(function($) {
     $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
+    var url = window.location.href.split('/');
+
     $('#search').on('keyup',function(){
         $value=$(this).val();
         if($value.length != 0){
@@ -32,7 +34,10 @@ jQuery( document ).ready(function($) {
         $.ajax({
             type : 'get',
             url : '{{URL::to('search')}}',
-            data:{'search':$value},
+            data:{
+                'search':$value, 
+                'brand':url['6']
+            },
             success:function(data){
                 $('tbody').html(data);
             }
@@ -45,7 +50,10 @@ jQuery( document ).ready(function($) {
             $.ajax({
                 type : 'get',
                 url : '{{URL::to('categorysearch')}}',
-                data:{'search':$value},
+                data:{
+                    'search':$value, 
+                    'brand':url['6']
+                },
                 success:function(data){
                     $('tbody').html(data);
                 }
@@ -55,7 +63,10 @@ jQuery( document ).ready(function($) {
             $.ajax({
                 type : 'get',
                 url : '{{URL::to('search')}}',
-                data:{'search':$value},
+                data:{
+                    'search':$value, 
+                    'brand':url['6']
+                },
                 success:function(data){
                     $('tbody').html(data);
                 }

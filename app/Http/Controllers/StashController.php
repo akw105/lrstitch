@@ -6,7 +6,10 @@ use App\User;
 use App\Stash;
 use App\Thread;
 use DB;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StashController extends Controller
 {
@@ -24,16 +27,29 @@ class StashController extends Controller
             $user = User::find($user_id);
         
             if(Stash::where('user_id', '=', $user_id)->count() == 0){
-                // need to make an alert whilst initial stash is created
-                $threads = Thread::all();
-    
-                foreach($threads as $thread){
-                    $values = array('thread_id' => $thread->id, 'user_id' => $user_id, 'skein' => 0, 'bobbin' => 0, 'partial' => 0, 'need' => 0);
-                    DB::table('stashes')->insert($values);
-                }
+                return redirect('/profile/'.$user->name.'/generating');
             }
             return view('threads.index', ['user' => $user]);
         }
+    }
+
+    public function generating($username)
+    {
+        $user = Auth::user();
+        return view('threads.loadingthreads', ['user' => $user]);
+    }
+
+    public function generatethreads()
+    {
+       
+        $threads = Thread::all();
+        $user_id = Auth::user()->id;
+        $stash = Stash::all();
+        foreach($threads as $thread){            
+            $values = array('thread_id' => $thread->id, 'user_id' => $user_id, 'skein' => '0', 'bobbin' => '0', 'partial' => '0', 'need' => '0');
+            DB::table('stashes')->insert($values);
+        }
+        return response()->json('success');
     }
     /**
      * Display a listing of the resource.
@@ -81,30 +97,6 @@ class StashController extends Controller
             ->join('threads', 'threads.id', '=', 'stashes.thread_id')
             ->where('stashes.user_id', $user_id)
             ->where('threads.brand', '=', 'Anchor')
-            ->orderBy('threads.id')
-            ->get();
-            return view('threads.threads-table', ['user' => $user, 'stash' => $stash]);
-        }
-        
-    }
-
-    public function indexcxc($username)
-    {
-        $user_id = Auth::user()->where('name', $username)->value('id');
-
-        if(Auth::user()->id != $user_id){
-            // if current logged in user is not he user of the profile
-            $user = User::find($user_id);
-            return view('threads.noaccess', ['user' => $user]);
-        }
-        else{
-            $user = User::find($user_id);
-        
-            $stash = DB::table('stashes')
-            ->select('*')
-            ->join('threads', 'threads.id', '=', 'stashes.thread_id')
-            ->where('stashes.user_id', $user_id)
-            ->where('threads.brand', '=', 'CXC')
             ->orderBy('threads.id')
             ->get();
             return view('threads.threads-table', ['user' => $user, 'stash' => $stash]);
@@ -224,6 +216,13 @@ class StashController extends Controller
             ->get();
             return view('threads.shopping', ['user' => $user, 'list' => $list]);
         }
+    }
+
+    public function exportthreads(){
+
+        $user_id = Auth::user()->where('name', $username)->value('id');
+
+        return Excel::download(new UsersExport, 'thread-inventory.xlsx');
     }
 
 }

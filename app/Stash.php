@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stash extends Model
 {
-    protected $table = 'stashes';
-    public $timestamps = false;
+    // protected $table = 'stashes';
+    // public $timestamps = false;
     
     protected $fillable = [
         'thread_id', 'user_id', 'skein', 'bobbin', 'partial', 'need'

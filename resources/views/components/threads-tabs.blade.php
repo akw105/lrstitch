@@ -25,17 +25,6 @@
         </div>
         <div class="col">
 			<div class="ui-block">
-				<a href="/profile/{{ $user->name }}/threads/cxc" class="ui-block-content tab-title">
-					<div class="monthly-indicator">
-						<div class="h6 title">
-							CXC
-						</div>
-					</div>
-				</a>
-			</div>
-        </div>
-        <div class="col">
-			<div class="ui-block">
 				<a href="/profile/{{ $user->name }}/threads/sullivans" class="ui-block-content tab-title">
 					<div class="monthly-indicator">
 						<div class="h6 title">

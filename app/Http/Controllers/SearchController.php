@@ -18,6 +18,7 @@ class SearchController extends Controller{
             ->join('threads', 'threads.id', '=', 'stashes.thread_id')
             ->where('stashes.user_id', $user_id)
             ->where('threads.number','LIKE','%'.$request->search."%")
+            ->where('threads.brand', '=', $request->brand)
             ->get();
             if($stash){
                 foreach ($stash as $key => $thread) {
@@ -53,6 +54,7 @@ class SearchController extends Controller{
             ->join('threads', 'threads.id', '=', 'stashes.thread_id')
             ->where('stashes.user_id', $user_id)
             ->where('threads.category','=',$request->search)
+            ->where('threads.brand', '=', $request->brand)
             ->get();
             if($stash){
                 foreach ($stash as $key => $thread) {

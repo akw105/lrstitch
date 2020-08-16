@@ -29,9 +29,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile/{username}', 'ProfileController@getProfile');
     Route::get('/profile/{username}/edit-profile', 'ProfileController@editProfile');
     Route::get('/profile/{username}/threads', 'StashController@index');
+    Route::get('/profile/{username}/generating', 'StashController@generating');
+    Route::get('/generatethreads', 'StashController@generatethreads');
+    Route::get('/thread-export', 'StashController@exportthreads');
     Route::get('/profile/{username}/threads/dmc', 'StashController@indexdmc');
     Route::get('/profile/{username}/threads/anchor', 'StashController@indexanchor');
-    Route::get('/profile/{username}/threads/cxc', 'StashController@indexcxc');
     Route::get('/profile/{username}/threads/sullivans', 'StashController@indexsullivans');
     Route::get('/profile/{username}/threads/batch', 'StashController@indexbatch');
     Route::get('/profile/{username}/fabrics', 'FabricController@index');

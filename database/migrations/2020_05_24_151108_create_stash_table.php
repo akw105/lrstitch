@@ -14,7 +14,7 @@ class CreateStashTable extends Migration
     public function up()
     {
         Schema::create('stashes', function (Blueprint $table) {
-            $table->id('stash_id');
+            $table->increments('stash_id');
             $table->integer('thread_id')->references('id')->on('threads');
             $table->integer('user_id')->references('id')->on('users');
             $table->integer('skein')->nullable(false);

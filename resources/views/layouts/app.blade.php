@@ -66,9 +66,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-							<a href="/" class="nav-link">Home</a>
-                        </li>
                          <li class="nav-item">
 							<a href="/blog" class="nav-link">Site News</a>
                         </li>
