@@ -8,7 +8,7 @@ use App\Thread;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Exports\UsersExport;
+use App\Exports\ThreadExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StashController extends Controller
@@ -220,9 +220,7 @@ class StashController extends Controller
 
     public function exportthreads(){
 
-        $user_id = Auth::user()->where('name', $username)->value('id');
-
-        return Excel::download(new UsersExport, 'thread-inventory.xlsx');
+        return Excel::download(new ThreadExport, 'threads-inventory.xlsx');
     }
 
 }
