@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Fabric;
 use App\Stash;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -39,7 +40,12 @@ class ProfileController extends Controller
     {
         if(Auth::user()->name == $name) {
             $user = Auth::user();
-            return view('profile.settings', ['user' => $user]);
+            $subscriptionplan = DB::table('subscription_plans')
+            ->select('subscription_plans.name')
+            ->join('subscriptions', 'subscriptions.stripe_plan', '=', 'subscription_plans.stripe_id')
+            ->where('subscriptions.user_id', $user->id)
+            ->first();
+            return view('profile.settings', ['user' => $user, 'subscriptionplan' => $subscriptionplan->name]);
        } else {
         return redirect('/');
        } 

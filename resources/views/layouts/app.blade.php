@@ -158,6 +158,7 @@
         </main>
         @include('includes.footer')
     </div>
+    @yield('scripts')
     @include('kustomer::kustomer')
 </body>
 </html>

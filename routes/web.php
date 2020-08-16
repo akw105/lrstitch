@@ -24,6 +24,7 @@ Route::get('/action-denied', 'HomeController@action_denied')->name('action-denie
 Route::get('/site-news','PostController@index');
 Route::get('/site-news/{slug}','PostController@show');
 
+
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile/{username}', 'ProfileController@getProfile');
     Route::get('/profile/{username}/edit-profile', 'ProfileController@editProfile');
@@ -51,6 +52,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
     
     Route::get('/project/api/autofill','ProjectController@getAutocompleteData'); 
+    Route::get('/subscribe', 'PlanController@index');
+    Route::get('/subscribe/{plan}', 'PlanController@show');
+    Route::get('/subscription-change', 'PlanController@change');
+    Route::post('/subscription/change/{plan}', 'SubscribeController@update');
+    Route::post('/subscription', 'SubscribeController@create')->name('subscription.create');
 });
 
 

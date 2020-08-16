@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
+use Carbon\Carbon;
 class User extends Authenticatable
 {
     use Notifiable;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'thread_stash'
+        'name', 'email', 'password', 'thread_stash', 'stripe_id', 'card_brand', 'card_last_four', 'trial_ends_at'
     ];
 
     /**
@@ -46,4 +49,15 @@ class User extends Authenticatable
         $initial = substr($this->name, 0, 1);
         return strtoupper($initial);
      }
+
+     public function subscription()
+    {
+        return $this->hasMany('App\Plan');
+    }
+
+    public function getTrialEndsAtAttribute($value)
+    {
+        $format = $this->getDateFormat();   
+        return  Carbon::createFromFormat($format, $value, 'UTC')->setTimezone(\Helper::getTimezone());
+    }  
 }
