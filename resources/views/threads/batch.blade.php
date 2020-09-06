@@ -2,17 +2,21 @@
 
 @section('content')
 @include('components.user-header')
-
+<div class="container">
+	<div class="row">
+		<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+			<div class="ui-block">
+				<div class="ui-block-title">
+					<div class="h6 title">Floss Inventory</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@include('components.threads-tabs')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-            <div class="card" id="thread-card">
-                <div class="card-header">Threads</div>
-                <div class="card-body" id="thread-listing">
-                    <div class="tab-menu">
-                        <a class="btn btn-primary" href="/profile/{{ $user->name }}/threads">Individual Update</a>
-                        <a class="btn btn-primary disabled" disabled href="/">Batch Update</a>
-                    </div>
                     <form method="post" action="/stash/bulkupdate">
                         {{ csrf_field() }}
 
@@ -50,8 +54,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>	    
+    
 <script src="/js/externals/responsive-tables.js"></script>
 	<script>
 		jQuery(document).ready(function ($) {

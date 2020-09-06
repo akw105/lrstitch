@@ -34,5 +34,27 @@
 				</a>
 			</div>
 		</div>
+		<div class="col">
+			<div class="ui-block">
+				<a href="/profile/{{ $user->name }}/threads/bulkimport" class="ui-block-content tab-title">
+					<div class="monthly-indicator">
+						<div class="h6 title">
+							Bulk Import
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		{{-- <div class="col">
+			<div class="ui-block">
+				<a href="/profile/{{ $user->name }}/threads/batch" class="ui-block-content tab-title">
+					<div class="monthly-indicator">
+						<div class="h6 title">
+							Bulk Edit
+						</div>
+					</div>
+				</a>
+			</div>
+		</div> --}}
 	</div>
 </div>

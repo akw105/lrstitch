@@ -9,6 +9,7 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exports\ThreadExport;
+use App\Imports\StashExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StashController extends Controller
@@ -150,6 +151,24 @@ class StashController extends Controller
             $chunks = $stash->chunk(2);
             return view('threads.batch', ['user' => $user, 'stash' => $stash, 'half'=>$half]);
         }
+        
+    }
+
+    public function importthreads($username)
+    {
+        $user_id = Auth::user()->where('name', $username)->value('id');
+        $user = User::find($user_id);
+
+        // $user_id = $user->id;
+        // if(Auth::user()->id != $user_id){
+        //     // if current logged in user is not he user of the profile
+        //     $user = User::find($user_id);
+        //     return view('threads.noaccess', ['user' => $user]);
+        // }
+        // else{
+            $message = "Sorry but it looks like you have an existing inventory, we don't recommended bulk importing because this will replace your entire existing inventory. Please note that inventory upload cannot be undone and your old inventory will lost. ";
+            return view('threads.import', ['user' => $user, 'message' => $message]);
+        //}
         
     }
 

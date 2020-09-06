@@ -32,6 +32,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile/{username}/generating', 'StashController@generating');
     Route::get('/generatethreads', 'StashController@generatethreads');
     Route::get('/thread-export', 'StashController@exportthreads');
+    Route::get('/profile/{username}/threads/bulkimport', 'StashController@importthreads');
+    Route::post('/importing-stash', 'StashImportController@importprocess');
+
     Route::get('/profile/{username}/threads/dmc', 'StashController@indexdmc');
     Route::get('/profile/{username}/threads/anchor', 'StashController@indexanchor');
     Route::get('/profile/{username}/threads/sullivans', 'StashController@indexsullivans');
